@@ -154,8 +154,24 @@ function handleBingo(cartelaNumber) {
   socket.emit("checkBingo", phone.value, cartelaNumber, stake);
 }
 
+async function getTelegramId(retries = 5, delay = 500) {
+  for (let i = 0; i < retries; i++) {
+    const tg = window.Telegram?.WebApp;
+
+    const id = tg.initDataUnsafe?.user?.id;
+    if (id) {
+      return id; // ✅ got it
+    }
+
+    // wait before retrying
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
+
+  throw new Error("Unable to fetch Telegram ID after retries");
+}
+
 onMounted(async () => {
-  const id = "353008986";
+  const id = await getTelegramId();
   // const id = "7094056144";
 
   socket.emit("set username", id, stake);
