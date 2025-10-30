@@ -35,15 +35,20 @@ const winnerModal = ref(false);
 const gameEndCounter = ref(8);
 let gameEndInterval = null;
 const errorMessage = ref(null);
+const errorCarNumber = ref(null);
 
 const userHasSelectedCartela = computed(() => {
   if (game.value) {
     const match = game?.value?.players.find((p) => p.user_id === phone.value);
 
     if (match) {
+      const cards = [];
+      match.cartela_number.forEach((c) => {
+        cards.push(get_card(c));
+      });
       return {
         status: true,
-        card: get_card(match.cartela_number[0]),
+        card: cards,
       };
     }
     return {
@@ -75,6 +80,7 @@ socket.on(`game_ended_${stake}`, (g) => {
 
 socket.on(`selected_card_respose_${stake}`, (games) => {
   game.value = JSON.parse(games);
+  const a = game.value.players.find((p) => p.user_id === phone.value);
 });
 
 socket.on(`drawing_numbers_${stake}`, (g) => {
@@ -133,14 +139,16 @@ socket.on("getBalance", (data) => {
   bonusBalance.value = data.bonus;
 });
 
-socket.on("blockUser", (g) => {
+socket.on(`blockUser_${stake}`, (g) => {
   game.value = JSON.parse(g);
 });
 
-socket.on("errorMessage", (msg) => {
+socket.on("errorMessage", (msg, n) => {
   errorMessage.value = msg;
+  errorCarNumber.value = n;
   setTimeout(() => {
     errorMessage.value = null;
+    errorCarNumber.value = null;
   }, 5000);
 });
 
@@ -190,7 +198,9 @@ onMounted(async () => {
   <div v-if="game?.active">
     <GameNavbar :game="game" :stake="stake" />
     <div class="flex h-[100%] justify-center mt-2 gap-1 py-2">
-      <div class="flex-1">
+      <div class="flex-1 flex flex-col gap-1">
+        <CurrentBall :game="game" />
+        <LastThreeBalls :game="game" />
         <Balls :numbers="numbers" :game="game" />
       </div>
       <div class="flex-1">
@@ -200,14 +210,13 @@ onMounted(async () => {
           <span class="font-bold">Started</span>
         </div>
 
-        <CurrentBall :game="game" />
-        <LastThreeBalls :game="game" />
         <PlayingCard
           v-if="userHasSelectedCartela.status"
           :card="userHasSelectedCartela.card"
           :game="game"
           :phone="phone"
           :errorMessage="errorMessage"
+          :errorCard="errorCarNumber"
           @handleBingo="handleBingo"
         />
         <PlaceholderCard v-if="!userHasSelectedCartela.status" />
