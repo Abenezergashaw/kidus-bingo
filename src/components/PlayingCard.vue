@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 const props = defineProps({
   card: {
     type: Array,
@@ -11,17 +11,31 @@ const props = defineProps({
   errorCard: Number,
 });
 
-const userSelectedNumbers = ref([]);
+const userSelectedNumbers = ref({});
 
-function handleNumberSelect(n) {
-  const index = userSelectedNumbers.value.indexOf(n);
+watch(
+  () => props.card,
+  (newCards) => {
+    if (Array.isArray(newCards)) {
+      newCards.forEach((card) => {
+        if (!userSelectedNumbers.value[card.id]) {
+          userSelectedNumbers.value[card.id] = [];
+        }
+      });
+    }
+  },
+  { immediate: true, deep: true } // immediate runs it on mount
+);
 
+function handleNumberSelect(n, card) {
+  const called = userSelectedNumbers.value[card];
+
+  const index = called.indexOf(n);
   if (index !== -1) {
-    userSelectedNumbers.value.splice(index, 1);
-    return;
+    called.splice(index, 1);
+  } else {
+    called.push(n);
   }
-
-  userSelectedNumbers.value.push(n);
 }
 
 const getBlockedStatus = (n) => {
@@ -73,11 +87,11 @@ const status = computed(() => {
         v-for="key in ['b1', 'i1', 'n1', 'g1', 'o1']"
         :key="key"
         class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
-        @click="handleNumberSelect(c[key])"
+        @click="handleNumberSelect(c[key], c.id)"
         :class="`${
           game?.current_number === c[key]
             ? 'animate-pulse'
-            : userSelectedNumbers.includes(c[key])
+            : userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
             : 'bg-gray-200'
         }`"
@@ -88,12 +102,12 @@ const status = computed(() => {
       <div
         v-for="key in ['b2', 'i2', 'n2', 'g2', 'o2']"
         :key="key"
-        @click="handleNumberSelect(c[key])"
+        @click="handleNumberSelect(c[key], c.id)"
         class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
           game?.current_number === c[key]
             ? 'animate-pulse'
-            : userSelectedNumbers.includes(c[key])
+            : userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
             : 'bg-gray-200'
         }`"
@@ -104,12 +118,12 @@ const status = computed(() => {
       <div
         v-for="key in ['b3', 'i3', 'n3', 'g3', 'o3']"
         :key="key"
-        @click="handleNumberSelect(c[key])"
+        @click="handleNumberSelect(c[key], c.id)"
         class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
           game?.current_number === c[key]
             ? 'animate-pulse'
-            : userSelectedNumbers.includes(c[key])
+            : userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
             : 'bg-gray-200'
         }`"
@@ -121,12 +135,12 @@ const status = computed(() => {
       <div
         v-for="key in ['b4', 'i4', 'n4', 'g4', 'o4']"
         :key="key"
-        @click="handleNumberSelect(c[key])"
+        @click="handleNumberSelect(c[key], c.id)"
         class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
           game?.current_number === c[key]
             ? 'animate-pulse'
-            : userSelectedNumbers.includes(c[key])
+            : userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
             : 'bg-gray-200'
         }`"
@@ -137,10 +151,10 @@ const status = computed(() => {
       <div
         v-for="key in ['b5', 'i5', 'n5', 'g5', 'o5']"
         :key="key"
-        @click="handleNumberSelect(c[key])"
+        @click="handleNumberSelect(c[key], c.id)"
         class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
-          userSelectedNumbers.includes(c[key])
+          userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
             : game?.current_number === c[key]
             ? ' bg-teal-500 text-white animate-pulse'
