@@ -27,7 +27,7 @@ const realBalance = ref(0);
 const bonusBalance = ref(0);
 const phone = ref(null);
 const telegarmId = ref(null);
-const stake = 10;
+const stake = 100;
 const game = ref(null);
 const numbers = Array.from({ length: 75 }, (_, i) => i + 1);
 const winnersData = ref([]);
