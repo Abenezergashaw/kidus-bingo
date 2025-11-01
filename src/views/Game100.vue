@@ -179,8 +179,8 @@ async function getTelegramId(retries = 5, delay = 500) {
 }
 
 onMounted(async () => {
-  // const id = await getTelegramId();
-  const id = "353008986";
+  const id = await getTelegramId();
+  // const id = "353008986";
 
   socket.emit("set username", id, stake);
 });
