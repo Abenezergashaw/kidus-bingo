@@ -194,7 +194,8 @@ onMounted(async () => {
   </div>
 
   <div v-if="!game?.active">
-    <Navbar :wallet="realBalance + bonusBalance" :game="game" />
+    <Navbar :wallet="realBalance + bonusBalance" :game="game" :stake="10" />
+
     <Cards :game="game" :phone="phone" @selectCard="handleCardSelect" />
     <SelectedCard
       v-if="userHasSelectedCartela.status"

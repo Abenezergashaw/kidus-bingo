@@ -51,7 +51,7 @@ const headers = ["B", "I", "N", "G", "O"];
             class="transition-color duration-200"
             :class="`${
               number === (game?.current_number || 0)
-                ? 'bg-teal-400 text-black'
+                ? ' animate-ping text-black'
                 : game?.drawn_numbers.includes(number)
                 ? 'bg-yellow-500 text-white'
                 : ' '

@@ -180,7 +180,7 @@ async function getTelegramId(retries = 5, delay = 500) {
 
 onMounted(async () => {
   const id = await getTelegramId();
-  //const id = "353008986";
+  // const id = "353008986";
 
   socket.emit("set username", id, stake);
 });
@@ -188,7 +188,7 @@ onMounted(async () => {
 
 <template>
   <div v-if="!game?.active">
-    <Navbar :wallet="realBalance + bonusBalance" :game="game" />
+    <Navbar :wallet="realBalance + bonusBalance" :game="game" :stake="10" />
     <Cards :game="game" :phone="phone" @selectCard="handleCardSelect" />
     <SelectedCard
       v-if="userHasSelectedCartela.status"

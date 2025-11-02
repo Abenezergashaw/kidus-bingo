@@ -2,6 +2,7 @@
 defineProps({
   wallet: Number,
   game: Object,
+  stake: Number,
 });
 </script>
 
@@ -22,7 +23,7 @@ defineProps({
       class="bg-white rounded-lg border-2 border-gray-300 flex-1 h-14 flex flex-col justify-center items-center text-lg text-red-500"
     >
       <span class="font-bold">Stake</span>
-      <span>{{ game.value }}</span>
+      <span>{{ stake }}</span>
     </div>
   </div>
 </template>
