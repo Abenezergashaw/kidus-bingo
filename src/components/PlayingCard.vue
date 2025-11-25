@@ -60,7 +60,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-for="c in card" class="mt-4 p-2 border rounded-xl shadow-md">
+  <div v-for="c in card" class="mt-1 p-0.5 border rounded-xl shadow-md">
     <div class="text-sm text-gray-200 text-center tracking-wider my-1">
       Cartela {{ c.id }}
     </div>
