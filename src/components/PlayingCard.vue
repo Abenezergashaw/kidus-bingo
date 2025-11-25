@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from "vue";
+import { computed, onUnmounted, ref, watch } from "vue";
 const props = defineProps({
   card: {
     type: Array,
@@ -53,6 +53,10 @@ const status = computed(() => {
   const player = props.game.players.find((p) => p.user_id === props.phone);
   return player ? player.blocked : false;
 });
+
+onUnmounted(() => {
+  userSelectedNumbers.value = {};
+});
 </script>
 
 <template>
@@ -89,10 +93,10 @@ const status = computed(() => {
         class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         @click="handleNumberSelect(c[key], c.id)"
         :class="`${
-          game?.current_number === c[key]
-            ? 'animate-pulse'
-            : userSelectedNumbers[c.id].includes(c[key])
+          userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
+            : game?.current_number === c[key]
+            ? ' bg-teal-500 text-white animate-pulse'
             : 'bg-gray-200'
         }`"
       >
@@ -105,10 +109,10 @@ const status = computed(() => {
         @click="handleNumberSelect(c[key], c.id)"
         class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
-          game?.current_number === c[key]
-            ? 'animate-pulse'
-            : userSelectedNumbers[c.id].includes(c[key])
+          userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
+            : game?.current_number === c[key]
+            ? ' bg-teal-500 text-white animate-pulse'
             : 'bg-gray-200'
         }`"
       >
@@ -121,10 +125,10 @@ const status = computed(() => {
         @click="handleNumberSelect(c[key], c.id)"
         class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
-          game?.current_number === c[key]
-            ? 'animate-pulse'
-            : userSelectedNumbers[c.id].includes(c[key])
+          userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
+            : game?.current_number === c[key]
+            ? ' bg-teal-500 text-white animate-pulse'
             : 'bg-gray-200'
         }`"
       >
@@ -138,10 +142,10 @@ const status = computed(() => {
         @click="handleNumberSelect(c[key], c.id)"
         class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
-          game?.current_number === c[key]
-            ? 'animate-pulse'
-            : userSelectedNumbers[c.id].includes(c[key])
+          userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
+            : game?.current_number === c[key]
+            ? ' bg-teal-500 text-white animate-pulse'
             : 'bg-gray-200'
         }`"
       >
@@ -176,7 +180,7 @@ const status = computed(() => {
       :class="`${
         getBlockedStatus(c.id)
           ? 'bg-red-500 text-white'
-          : 'bg-gray-100 text-black'
+          : 'bg-amber-300 text-black'
       }`"
     >
       BINGO!
