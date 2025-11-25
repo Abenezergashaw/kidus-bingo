@@ -24,8 +24,8 @@ function getNumber(row, col, index) {
         class="bg-gray-300 bg-opacity-100 w-[90%] max-h-screen mx-auto mt-32 p-4 rounded-lg overflow-y-auto"
         style="height: 500px"
       >
-        <div class="text-center text-lg tracking-wider my-1 text-red-500">
-          {{ winnersData.length }} Winners
+        <div class="text-center text-sm tracking-wider my-1 text-red-500">
+          {{ winnersData.length }} Winner(s)!!
         </div>
         <div
           v-for="(win_card, index) in winnersData"
@@ -41,7 +41,7 @@ function getNumber(row, col, index) {
 
           <!-- Header Row -->
           <div
-            class="grid grid-cols-5 gap-1 text-center font-bold text-white text-lg mb-2"
+            class="grid grid-cols-5 gap-1 text-center font-bold text-white text-sm mb-2"
           >
             <div
               class="border-1 rounded-xl py-1"

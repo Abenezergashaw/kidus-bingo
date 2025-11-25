@@ -15,7 +15,7 @@ const props = defineProps({
       v-for="c in card"
       class="flex flex-col justify-center items-center mx-auto mt-4 p-2 border rounded-xl shadow-md"
     >
-      <div class="text-lg text-gray-200 text-center tracking-wider">
+      <div class="text-sm text-gray-200 text-center tracking-wider">
         Cartela {{ c?.id }}
       </div>
       <div
@@ -66,7 +66,7 @@ const props = defineProps({
           class="bingo-cell"
         >
           <span v-if="key === 'n3'" class="text-gray-500 font-medium">★ </span>
-          <span class="text-lg font-semibold text-gray-800" v-else>{{
+          <span class="text-sm font-semibold text-gray-800" v-else>{{
             c[key]
           }}</span>
         </div>
@@ -93,9 +93,9 @@ const props = defineProps({
 
 <style scoped>
 .bingo-cell {
-  @apply flex items-center justify-center text-center w-8 h-8 text-lg font-semibold text-gray-800 bg-gray-200 border-2 border-white rounded-lg;
+  @apply flex items-center justify-center text-center w-8 h-8 text-sm font-semibold text-gray-800 bg-gray-200 border-2 border-white rounded-lg;
 }
 .bingo-head {
-  @apply flex items-center justify-center text-center w-8 h-8 text-lg font-semibold text-gray-200  rounded-lg;
+  @apply flex items-center justify-center text-center w-8 h-8 text-sm font-semibold text-gray-200  rounded-lg;
 }
 </style>

@@ -57,7 +57,7 @@ const status = computed(() => {
 
 <template>
   <div v-for="c in card" class="mt-4 p-2 border rounded-xl shadow-md">
-    <div class="text-lg text-gray-200 text-center tracking-wider my-1">
+    <div class="text-sm text-gray-200 text-center tracking-wider my-1">
       Cartela {{ c.id }}
     </div>
     <div class="grid grid-cols-5 gap-1 text-center font-bold text-xl mb-2">
@@ -86,7 +86,7 @@ const status = computed(() => {
       <div
         v-for="key in ['b1', 'i1', 'n1', 'g1', 'o1']"
         :key="key"
-        class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
+        class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         @click="handleNumberSelect(c[key], c.id)"
         :class="`${
           game?.current_number === c[key]
@@ -103,7 +103,7 @@ const status = computed(() => {
         v-for="key in ['b2', 'i2', 'n2', 'g2', 'o2']"
         :key="key"
         @click="handleNumberSelect(c[key], c.id)"
-        class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
+        class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
           game?.current_number === c[key]
             ? 'animate-pulse'
@@ -119,7 +119,7 @@ const status = computed(() => {
         v-for="key in ['b3', 'i3', 'n3', 'g3', 'o3']"
         :key="key"
         @click="handleNumberSelect(c[key], c.id)"
-        class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
+        class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
           game?.current_number === c[key]
             ? 'animate-pulse'
@@ -129,14 +129,14 @@ const status = computed(() => {
         }`"
       >
         <span v-if="key === 'n3'" class="text-gray-500 font-medium">★ </span>
-        <span class="text-lg font-semibold" v-else>{{ c[key] }}</span>
+        <span class="text-sm font-semibold" v-else>{{ c[key] }}</span>
       </div>
 
       <div
         v-for="key in ['b4', 'i4', 'n4', 'g4', 'o4']"
         :key="key"
         @click="handleNumberSelect(c[key], c.id)"
-        class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
+        class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
           game?.current_number === c[key]
             ? 'animate-pulse'
@@ -152,7 +152,7 @@ const status = computed(() => {
         v-for="key in ['b5', 'i5', 'n5', 'g5', 'o5']"
         :key="key"
         @click="handleNumberSelect(c[key], c.id)"
-        class="flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
+        class="flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300"
         :class="`${
           userSelectedNumbers[c.id].includes(c[key])
             ? 'bg-teal-500 text-white'
@@ -166,7 +166,7 @@ const status = computed(() => {
     </div>
     <div
       v-if="errorMessage && c.id === errorCard"
-      class="text-center text-red-500 tracking-wide text-lg mt-1"
+      class="text-center text-red-500 tracking-wide text-sm mt-1"
     >
       {{ errorMessage }}
     </div>
@@ -186,6 +186,6 @@ const status = computed(() => {
 
 <style scoped>
 .bingo-cell {
-  @apply flex items-center justify-center w-8 h-8 text-lg font-semibold text-gray-800 bg-gray-200 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300;
+  @apply flex items-center justify-center w-8 h-8 text-sm font-semibold text-gray-800 bg-gray-200 border-2 border-white rounded-lg backdrop-blur-md transition-all duration-300;
 }
 </style>

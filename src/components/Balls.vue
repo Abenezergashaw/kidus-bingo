@@ -21,7 +21,7 @@ const headers = ["B", "I", "N", "G", "O"];
         <div
           v-for="(header, i) in headers"
           :key="'header-' + i"
-          class="font-bold text-xl text-[#fff] rounded"
+          class="font-bold text-sm text-[#fff] rounded"
           :class="`${
             header === 'B'
               ? 'bg-[#E33739]'
