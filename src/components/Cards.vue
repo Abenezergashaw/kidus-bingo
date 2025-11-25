@@ -41,10 +41,10 @@ const getNumberColor = (number) => {
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e0450d; /* Tailwind blue-300 */
+  background: white; /* Tailwind blue-300 */
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(237, 0, 0); /* Tailwind blue-400 */
+  background: rgb(235, 223, 223); /* Tailwind blue-400 */
 }
 </style>

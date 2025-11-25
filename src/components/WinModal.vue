@@ -30,11 +30,11 @@ function getNumber(row, col, index) {
         <div
           v-for="(win_card, index) in winnersData"
           :key="index"
-          class="w-[90%] sm:w-[60%] mx-auto mb-2 bg-amber-300 p-4 rounded-lg shadow-lg"
+          class="w-[90%] sm:w-[60%] mx-auto mb-2 bg-gray-900 p-4 rounded-lg shadow-lg"
         >
           <div class="text-lg font-bold text-center text-white mb-2 gap-2">
-            <div class="text-black">🏆 {{ win_card.username }} Won!! 🏆</div>
-            <div class="text-black text-sm">
+            <div class="text-white">🏆 {{ win_card.username }} Won!! 🏆</div>
+            <div class="text-white text-sm">
               Cartela #{{ win_card.card.id }}
             </div>
           </div>
@@ -100,7 +100,7 @@ function getNumber(row, col, index) {
         </div>
       </div>
       <button
-        class="w-[90%] mx-auto py-4 bg-amber-300 rounded-xl my-2 text-black text-2xl font-extrabold tracking-wider border border-white flex justify-center items-center"
+        class="w-[90%] mx-auto py-4 bg-gray-200 rounded-xl my-2 text-black text-2xl font-extrabold tracking-wider border border-black flex justify-center items-center"
       >
         {{ counter }}
       </button>

@@ -8,7 +8,7 @@ defineProps({
 <template>
   <div class="flex justify-between items-center gap-1">
     <div
-      class="bg-white rounded-lg border-2 border-gray-300 flex-1 flex flex-col justify-center items-center text-sm font-bold py-1 text-red-500"
+      class="bg-white rounded-lg border-2 border-gray-300 flex-1 flex flex-col justify-center items-center text-sm font-bold py-1 text-gray-800"
     >
       <span class="font-bold">Derash</span>
       <span>
@@ -26,7 +26,7 @@ defineProps({
       </span>
     </div>
     <div
-      class="bg-white rounded-lg border-2 border-gray-300 flex-1 py-1 flex flex-col justify-center items-center text-sm text-red-500"
+      class="bg-white rounded-lg border-2 border-gray-300 flex-1 py-1 flex flex-col justify-center items-center text-sm text-gray-800"
     >
       <span class="font-bold">Players</span>
       <span>
@@ -40,13 +40,13 @@ defineProps({
       >
     </div>
     <div
-      class="bg-white rounded-lg border-2 border-gray-300 flex-1 py-1 flex flex-col justify-center items-center text-sm text-red-500"
+      class="bg-white rounded-lg border-2 border-gray-300 flex-1 py-1 flex flex-col justify-center items-center text-sm text-gray-800"
     >
       <span class="font-bold">Bet</span>
       <span>{{ stake }}</span>
     </div>
     <div
-      class="bg-white rounded-lg border-2 border-gray-300 flex-1 py-1 flex flex-col justify-center items-center text-sm text-red-500"
+      class="bg-white rounded-lg border-2 border-gray-300 flex-1 py-1 flex flex-col justify-center items-center text-sm text-gray-800"
     >
       <span class="font-bold">Call</span>
       <span>

@@ -60,7 +60,7 @@ const status = computed(() => {
     <div class="text-sm text-gray-200 text-center tracking-wider my-1">
       Cartela {{ c.id }}
     </div>
-    <div class="grid grid-cols-5 gap-1 text-center font-bold text-xl mb-2">
+    <div class="grid grid-cols-5 gap-1 text-center font-bold text-sm mb-2">
       <div
         v-for="letter in ['B', 'I', 'N', 'G', 'O']"
         :key="letter"
@@ -172,11 +172,11 @@ const status = computed(() => {
     </div>
     <button
       @click="$emit('handleBingo', c.id)"
-      class="w-full py-4 rounded-xl my-2 text-xl font-bold tracking-wider border border-white flex justify-center items-center"
+      class="w-full py-4 rounded-xl my-2 text-sm font-bold tracking-wider border border-white flex justify-center items-center"
       :class="`${
         getBlockedStatus(c.id)
           ? 'bg-red-500 text-white'
-          : 'bg-amber-300 text-black'
+          : 'bg-gray-100 text-black'
       }`"
     >
       BINGO!
