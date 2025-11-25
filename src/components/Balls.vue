@@ -56,7 +56,7 @@ const headers = ["B", "I", "N", "G", "O"];
                 ? 'bg-yellow-500 text-white'
                 : ' '
             }
-                text-center  font-bold rounded-md flex items-center justify-center text-sm py-1 text-black bg-gray-100 bg-opacity-80 border-2 border-white`"
+                text-center  font-bold rounded-md flex items-center justify-center text-sm py-1 text-white bg-gray-500 bg-opacity-80 border-2 border-black shadow shadow-orange-200`"
           >
             {{ number }}
           </div>
