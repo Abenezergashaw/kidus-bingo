@@ -43,7 +43,7 @@ const headers = ["B", "I", "N", "G", "O"];
         <div
           v-for="(column, colIndex) in columns"
           :key="'col-' + colIndex"
-          class="flex flex-col gap-2"
+          class="flex flex-col gap-1"
         >
           <div
             v-for="number in column"
