@@ -30,7 +30,7 @@ function get_letter(n) {
 </script>
 <template>
   <div
-    class="bg-teal-500 border-2 border-gray-300 flex-1 h-16 flex justify-between items-center text-sm font-bold text-white px-2 uppercase tracking-wider mt-3 rounded-full"
+    class="bg-teal-500 border-2 border-gray-300 flex-1 h-16 flex justify-between items-center text-sm font-bold text-white px-2 uppercase tracking-wider mt-2 rounded-full"
   >
     <span class="font-bold">Current Call</span>
     <span
