@@ -15,7 +15,7 @@ const headers = ["B", "I", "N", "G", "O"];
 
 <template>
   <div class="h-full">
-    <div class="w-[100%] rounded mt-1">
+    <div class="w-[100%] rounded mt-0.5">
       <div class="grid grid-cols-5 gap-2 text-center p-1">
         <!-- Headers -->
         <div
